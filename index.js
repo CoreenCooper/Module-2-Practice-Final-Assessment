@@ -1,6 +1,6 @@
-// A `ul` with the id `all-characters` that contains an `li`'s with an image (id=`photo-img`)
-// of each character in the API (first page only), as well as the characters name.
-
+// Side scroll through the `all-characters` ul and click on a character.
+const main = document.querySelector("main");
+const title = document.querySelector("title");
 const allCharacters = document.querySelector("#all-characters");
 
 const getAllCharacters = (res) => {
@@ -18,18 +18,45 @@ const getAllCharacters = (res) => {
   });
 };
 
-const getCharacters = () => {
+// When they select a character, the `main` should appear
+// the character's (name, image, status, location name) should populate in the `character-info` section.
+// The page `title` should also match the name of the character selected.
+// When they click on a different character, this information should be replaced.
+
+// const selectCharacter = (e) => {
+//   main.style.display = "flex";
+//   const characterName = e.target.parentElement.textContent;
+//   const name = e.target.parentElement.lastElementChild.textContent;
+//   const characterImg = document.querySelector("#character-img");
+//   const characterStatus = document.querySelector("#character-status");
+//   const characterLocation = document.querySelector("#character-location");
+//   //   const name = e.target.parentElement.textContent;
+//   title.textContent = name;
+//   characterName.textContent = name;
+//   debugger;
+//   characterImg.src = e.target.parentElement.src;
+//   //   characterStatus.textContent =
+//   //   characterLocation.textContent =
+// };
+
+const getCharacters = (e) => {
   fetch("https://rickandmortyapi.com/api/character")
-  .then((res) => {
-    if (!res.ok) {
-      throw Error("Something is wrong.");
-    }
-    return res.json();
-  })
-  .then(res => {
-    getAllCharacters(res)
-  })
+    .then((res) => {
+      if (!res.ok) {
+        throw Error("Something is wrong.");
+      }
+      return res.json();
+    })
+    .then((res) => {
+      getAllCharacters(res);
+      //   selectCharacter(e);
+    });
 };
+
+allCharacters.addEventListener("click", (e) => {
+//   selectCharacter(e);
+  debugger;
+});
 
 getCharacters();
 
@@ -43,11 +70,6 @@ getCharacters();
 // Also insider `character-comments-section`  should be a `ul` with the id `character-comments-ul` that
 // contains the submitted comments of each character.
 
-// Side scroll through the `all-characters` ul and click on a character.
-// When they select a character, the `main` should appear and information about that
-// character (name, image, status, location name) should populate in the `character-info` section.
-// When they click on a different character, this information should be replaced.
-// The page `title` should also match the name of the character selected.
 // Use the `form`, to submit a character comment. Each comment should be a new `li` inside of `character-comments-ul`,
 // with the selected character's name (in bold) and a comment (not bold).
 
