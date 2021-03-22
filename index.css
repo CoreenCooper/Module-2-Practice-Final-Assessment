@@ -22,10 +22,10 @@ img {
 }
 
 main {
+    display: none;
     border: white solid 5px;
     width: 70%;
     /* margin: auto; */
-    /* display: none; */
 }
 
 #comment[type="text"] {
