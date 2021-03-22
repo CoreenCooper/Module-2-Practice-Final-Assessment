@@ -1,0 +1,31 @@
+body {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, header > img {
+    width: 70%;
+    height: 150px;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    margin-bottom: 20px;
+    background-color: green;
+}
+
+img {
+    height: 100px;
+}
+
+main {
+    width: 70%;
+    display: flex;
+}
+
+#comment[type="text"] {
+    width: 380px;
+}
