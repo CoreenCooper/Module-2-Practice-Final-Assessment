@@ -1,19 +1,19 @@
 body {
     background-color: black;
+    color: white;
+    font-family: fantasy;
     display: flex;
     flex-direction: column;
-}
-
-h1, header > img {
-    width: 70%;
-    height: 150px;
+    align-items: center;
 }
 
 header {
+    height: 150px;
+    width: 70%;
     display: flex;
     justify-content: space-around;
-    align-content: center;
-    margin-bottom: 20px;
+    align-items: center;
+    margin: auto;
     background-color: green;
 }
 
@@ -22,8 +22,10 @@ img {
 }
 
 main {
+    border: white solid 5px;
     width: 70%;
-    display: flex;
+    /* margin: auto; */
+    /* display: none; */
 }
 
 #comment[type="text"] {
