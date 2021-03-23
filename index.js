@@ -1,6 +1,6 @@
 // Side scroll through the `all-characters` ul and click on a character.
-const main = document.querySelector("main");
-const title = document.querySelector("title");
+// const main = document.querySelector("main");
+// const title = document.querySelector("title");
 const allCharacters = document.querySelector("#all-characters");
 
 const getAllCharacters = (res) => {
@@ -17,6 +17,17 @@ const getAllCharacters = (res) => {
     characterName.textContent = char.name;
   });
 };
+
+const getCharacters = async () => {
+  const res = await axios.get("https://rickandmortyapi.com/api/character");
+  try {
+    getAllCharacters(res.data);
+  }
+  catch (err) {
+    console.log("Something, something, something, something just ain't right");
+  }
+}
+getCharacters();
 
 // When they select a character, the `main` should appear
 // the character's (name, image, status, location name) should populate in the `character-info` section.
@@ -39,26 +50,26 @@ const getAllCharacters = (res) => {
 //   //   characterLocation.textContent =
 // };
 
-const getCharacters = (e) => {
-  const res = axios.get("https://rickandmortyapi.com/api/character")
-    .then((res) => {
-      if (!res.ok) {
-        throw Error("Something is wrong.");
-      }
-      return res.json();
-    })
-    .then((res) => {
-      getAllCharacters(res);
-      //   selectCharacter(e);
-    });
-};
+// const getCharacters = (e) => {
+//   // const res = axios.get("https://rickandmortyapi.com/api/character")
+//   fetch("https://rickandmortyapi.com/api/character")
+//     .then((res) => {
+//       if (!res.ok) {
+//         throw Error("Something is wrong.");
+//       }
+//       return res.json();
+//     })
+//     .then((res) => {
+//       getAllCharacters(res);
+//       //   selectCharacter(e);
+//     });
+// };
 
-allCharacters.addEventListener("click", (e) => {
-//   selectCharacter(e);
-  debugger;
-});
+// allCharacters.addEventListener("click", (e) => {
+// //   selectCharacter(e);
+//   debugger;
+// });
 
-getCharacters();
 
 // A `main` tag that starts not on the page
 // Inside of `main` should be two sections. The first section should have the id `character-info`
