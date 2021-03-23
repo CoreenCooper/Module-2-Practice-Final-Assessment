@@ -1,5 +1,6 @@
 // Side scroll through the `all-characters` ul and click on a character.
 const main = document.querySelector("main");
+const form = document.querySelector("form");
 const title = document.querySelector("title");
 const allCharacters = document.querySelector("#all-characters");
 
@@ -38,6 +39,18 @@ const selectCharacter = (e) => {
 
 // Use the `form`, to submit a character comment. Each comment should be a new `li` inside of `character-comments-ul`,
 // with the selected character's name (in bold) and a comment (not bold).
+const displayComment = (e) => {
+  e.preventDefault();
+  // li.textContent = " ";
+  const comment = document.querySelector("#comment");
+  const characterCommentsUl = document.querySelector("#character-comments-ul");
+  const li = document.createElement("li");
+  characterCommentsUl.appendChild(li);
+  li.innerHTML = `<b>${title.textContent}:</b> ${comment.value}`
+  comment.value = "";
+  debugger
+}
+
 
 const getCharacters = async () => {
   try {
@@ -47,6 +60,10 @@ const getCharacters = async () => {
     console.log("Something, something, something, something just ain't right");
   }
 };
+
+form.addEventListener("submit", (e) => {
+  displayComment(e);
+});
 
 allCharacters.addEventListener("click", (e) => {
   selectCharacter(e);
