@@ -23,22 +23,18 @@ const getAllCharacters = (res) => {
 // page `title` updates to match the character selected
 // information updates when different character is selected
 
-const displayCharacter = (e, res) => {
+const displayCharacter = (e) => {
   main.style.display = "flex";
-  res.results.forEach((char) => {
-    const name = e.target.parentElement.lastElementChild.textContent;
-    if (char.name === name) {
-      const characterName = document.querySelector("#character-name");
-      const characterImg = document.querySelector("#character-img");
-      const characterStatus = document.querySelector("#character-status");
-      const characterLocation = document.querySelector("#character-location");
-      title.textContent = name;
-      characterName.textContent = name;
-      characterImg.src = e.target.parentElement.firstElementChild.src;
-      characterStatus.textContent = char.status;
-      characterLocation.textContent = char.location.name;
-    }
-  });
+  const characterName = document.querySelector("#character-name");
+  const name = e.target.parentElement.lastElementChild.textContent;
+  const characterImg = document.querySelector("#character-img");
+  // const characterStatus = document.querySelector("#character-status");
+  // const characterLocation = document.querySelector("#character-location");
+  title.textContent = name;
+  characterName.textContent = name;
+  characterImg.src = e.target.parentElement.firstElementChild.src;
+  //   characterStatus.textContent =
+  //   characterLocation.textContent =
 };
 
 // Use the `form`, to submit a character comment. Each comment should be a new `li` inside of `character-comments-ul`,
@@ -49,9 +45,10 @@ const displayComment = (e) => {
   const characterCommentsUl = document.querySelector("#character-comments-ul");
   const li = document.createElement("li");
   characterCommentsUl.appendChild(li);
-  li.innerHTML = `<b>${title.textContent}:</b> ${comment.value}`;
+  li.innerHTML = `<b>${title.textContent}:</b> ${comment.value}`
   comment.value = "";
-};
+  debugger
+}
 
 const getCharacters = async () => {
   try {
@@ -64,14 +61,6 @@ const getCharacters = async () => {
 
 form.addEventListener("submit", displayComment);
 
-allCharacters.addEventListener("click", async (e) => {
-  try {
-    const res = await axios.get("https://rickandmortyapi.com/api/character");
-    debugger;
-    displayCharacter(e, res.data);
-  } catch (err) {
-    console.log("Something, something, something, something just ain't right");
-  }
-});
+allCharacters.addEventListener("click", displayCharacter);
 
 getCharacters();
