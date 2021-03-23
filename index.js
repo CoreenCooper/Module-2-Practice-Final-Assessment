@@ -40,7 +40,7 @@ const getAllCharacters = (res) => {
 // };
 
 const getCharacters = (e) => {
-  fetch("https://rickandmortyapi.com/api/character")
+  const res = axios.get("https://rickandmortyapi.com/api/character")
     .then((res) => {
       if (!res.ok) {
         throw Error("Something is wrong.");
@@ -74,3 +74,31 @@ getCharacters();
 // with the selected character's name (in bold) and a comment (not bold).
 
 // get api of all
+
+
+
+// async /////////////////////
+// // async - allows us to assign the results of fetch to a variable
+// const getCharacters = async () => {
+//   // res variable has the same value as the result from .them(promise object)
+//   try {
+//     // const res = await fetch("https://rickandmortyapi.com/api/character?page=1");
+//     // replace fetch with axios.get
+//     const res = await axios.get("https://rickandmortyapi.com/api/character?page=1");
+//     // to get json it must be assigned to a variable with await - must put await in front of json()
+//     // axios skips the step of adding await to json()
+//     // remove  axios returns json() for us
+//     // const data = await res.json();
+
+//     displayAllCharacters(res.data);
+
+//     // look about creating this event listener outside
+//     ul.addEventListener("click", (event) => {
+//       // updated res to data
+//       eachCharacter(res.data, event);
+//     });
+
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
