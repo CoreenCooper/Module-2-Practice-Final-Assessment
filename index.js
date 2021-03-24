@@ -43,6 +43,9 @@ const displayCharacter = (e, res) => {
 
 // Use the `form`, to submit a character comment. Each comment should be a new `li` inside of `character-comments-ul`,
 // with the selected character's name (in bold) and a comment (not bold).
+let res = {};
+// dat
+
 const displayComment = (e) => {
   e.preventDefault();
   const comment = document.querySelector("#comment");
@@ -55,7 +58,7 @@ const displayComment = (e) => {
 
 const getCharacters = async () => {
   try {
-    const res = await axios.get("https://rickandmortyapi.com/api/character");
+    res = await axios.get("https://rickandmortyapi.com/api/character");
     getAllCharacters(res.data);
   } catch (err) {
     console.log("Something, something, something, something just ain't right");
@@ -64,14 +67,41 @@ const getCharacters = async () => {
 
 form.addEventListener("submit", displayComment);
 
-allCharacters.addEventListener("click", async (e) => {
+allCharacters.addEventListener("click", (e) => {
   try {
-    const res = await axios.get("https://rickandmortyapi.com/api/character");
-    debugger;
+   console.log(res)
+    // const res = await axios.get("https://rickandmortyapi.com/api/character");
     displayCharacter(e, res.data);
   } catch (err) {
+    debugger
     console.log("Something, something, something, something just ain't right");
   }
 });
 
 getCharacters();
+
+//////////////Normalize Data///////////////////////
+// const res = { data: { results: [{id: 1, name: "Coreen"}, {id: 2, name: "corey"}]}}
+
+// const data = {};
+
+// res.data.results.forEach(person => {
+  //   data[person.id] = person;
+  // })
+  
+  // data;
+  
+  ////////////////////////////////////////
+// const res = { data: { results: [{id: 1, name: "Coreen"}, {id: 2, name: "corey"}]}}
+
+// const dataNoramlizer = (arr) => {
+//   const data = {};
+//   arr.forEach(person => {
+//     data[person.id] = person;
+//   })
+//   return data;
+// }
+
+// const data = dataNoramlizer(res.data.results)
+
+
